@@ -1,0 +1,23 @@
+---
+# tasks file for deploy_postgres
+- name: install postgress
+  yum: 
+    name: postgresql-server
+    state: latest
+
+- name: check if data directory is empty
+  find:
+    path: /var/lib/pgsql/data
+  register: filesfound 
+
+- name: initilize postgres
+  command: postgresql-setup initdb
+  when: filesfound.matched < 2 
+
+- name: start postgres and enable at boot
+  service:
+    name: postgresql
+    state: started
+    enabled: yes
+
+

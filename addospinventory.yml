@@ -1,4 +1,4 @@
-- hosts: workstation-a84d.rhpds.opentlc.com 
+- hosts: jumpbox 
   gather_facts: false
 
   roles:

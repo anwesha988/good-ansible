@@ -1,4 +1,9 @@
 ---
+- hosts: jumpbox
+  gather_facts: false
+  roles:
+    - add_osp_inventory
+
 - name: configuration
   hosts: all
   gather_facts: false # remove later! speeds up testing

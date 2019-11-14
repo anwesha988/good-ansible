@@ -1,0 +1,13 @@
+---
+# tasks file for add_osp_inventory
+- os_server_info:
+    cloud: ospcloud
+  register: osp
+- debug: var=item.public_v4
+  loop: "{{ osp.openstack_servers }}"
+- debug: var=item.metadata.group
+  loop: "{{ osp.openstack_servers }}"
+- add_host:
+    group: "{{ item.metadata.group }}"
+    name: "{{ item.public_v4 }}"
+  loop: "{{ osp.openstack_servers }}"

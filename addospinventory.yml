@@ -1,0 +1,5 @@
+- hosts: workstation-a84d.rhpds.opentlc.com 
+  gather_facts: false
+
+  roles:
+    - add_osp_inventory 

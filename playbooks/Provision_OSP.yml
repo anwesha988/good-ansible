@@ -1,0 +1,6 @@
+---
+# Use Jumpbox to provision OpenStack
+- hosts: localhost
+  roles:
+     - osp.servers
+ 
